@@ -1,12 +1,13 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
-const cors = require('cors'); // 
-const app = express();
+const cors = require('cors'); // a security feature (allow the front-end to access the data from back-end)
 const knex = require('knex');
 
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const image = require('./controllers/image');
+
+const app = express();
 
 const db = knex({
 	client: 'pg',
@@ -18,8 +19,8 @@ const db = knex({
   }
 });
 
-app.use(express.urlencoded({extended: false})); //
-app.use(express.json()); // 
+app.use(express.urlencoded({extended: false})); // needed to receive the request in form data
+app.use(express.json()); // needed to receive the request in json
 app.use(cors());
 
 app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt) });

@@ -6,7 +6,7 @@ const app = new Clarifai.App({
 
 const handleApiCall = (req, res) => {
 	app.models
-		.predict(Clarifai.FACE_DETECT_MODEL, req.body.input) // communicate to Clarifai API
+		.predict(Clarifai.FACE_DETECT_MODEL, req.body.input) // communicate to Clarifai API (in back-end)
 		.then(data => {
 			res.json(data);
 		})
