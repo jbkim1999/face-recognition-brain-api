@@ -44,4 +44,7 @@
   "devDependencies": {},
   "author": "",
   "license": "ISC"
+  "engines": {
+    "node": "12.16.3"
+  },
 }
