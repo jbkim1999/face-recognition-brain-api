@@ -23,8 +23,6 @@ app.use(express.urlencoded({extended: false})); // needed to receive the request
 app.use(express.json()); // needed to receive the request in json
 app.use(cors());
 
-app.get('/', (req, res) => { res.send("back-end is working!")});
-
 app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt) });
 
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) }); // dependency injection
@@ -48,6 +46,6 @@ app.get('/profile/:id', (req, res) => {
 
 const PORT = process.env.PORT; // environmental variable
 
-app.listen(PORT || 3000, () => {
+app.listen(PORT, () => {
 	console.log(`app is running on port ${PORT}`);
 });
