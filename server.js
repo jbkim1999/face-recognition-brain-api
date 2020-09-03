@@ -12,11 +12,9 @@ const app = express();
 const db = knex({
 	client: 'pg',
 	connection: {
-    host : '127.0.0.1',
-    user : 'postgres',
-    password : 'test',
-    database : 'test'
-  }
+		connectionString : process.env.DATABASE_URL,
+		ssl : true,
+  	}
 });
 
 app.use(express.urlencoded({extended: false})); // needed to receive the request in form data
