@@ -23,6 +23,8 @@ app.use(express.urlencoded({extended: false})); // needed to receive the request
 app.use(express.json()); // needed to receive the request in json
 app.use(cors());
 
+app.get('/', (req, res) => res.json("Your back-end is working!"));
+
 app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt) });
 
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) }); // dependency injection
